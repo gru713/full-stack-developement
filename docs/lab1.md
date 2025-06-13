@@ -98,19 +98,16 @@ Before making any commits, configure your Git username and email. These will be 
 
    ```
    git config --global user.name "Guruprasath M R"
-
    ```
 3. Set your email:
 
    ```
    git config --global user.email "713gru@gmail.com"
-
    ```
 4. Verify configuration:
 
    ```
    git config --list
-
    ```
 
 <br/>
@@ -126,7 +123,6 @@ This section walks you through initializing a Git repository, creating files, an
    ```
    mkdir my-web-project
    cd my-web-project
-
    ```
 
    * *Observation:* You are now inside the `my-web-project` directory.
@@ -134,11 +130,13 @@ This section walks you through initializing a Git repository, creating files, an
 
    ```
    git init
-
    ```
 
    * *Observation:* You should see a message indicating an empty Git repository has been initialized.
    * *Self-reflection:* At this point, your directory becomes a Git repository.
+     
+   ![git init](./images/lab1-1.png)  
+
 3. **Understanding Git's Three States:** Git primarily operates with three main states for your files:
 
    * **Working Directory:** This is where you actually modify files. These are the files you see in your project folder.
@@ -180,55 +178,59 @@ This section walks you through initializing a Git repository, creating files, an
    ```
 
    * *Observation:* You now have two new files in your `my-web-project` directory.
-5. **Check the status of your repository (**\`\`**):** This command shows you the current state of your working directory and staging area, indicating which files are untracked, modified, or staged.
+5. **Check the status of your repository :** This command shows you the current state of your working directory and staging area, indicating which files are untracked, modified, or staged.
 
    ```
    git status
-
    ```
 
    * *Observation:* You should see `index.html` and `styles.css` listed under "Untracked files." This means Git sees them but isn't currently tracking their changes.
-6. **Stage the files (**\`\`**):** Add `index.html` to the staging area. This prepares the file to be included in the next commit.
+
+   ![git status](./images/lab1-2.png)
+
+6. **Stage the files :** Add `index.html` to the staging area. This prepares the file to be included in the next commit.
 
    ```
    git add index.html
-
    ```
 
    * *Observation:* Run `git status` again. `index.html` should now be under "Changes to be committed," indicating it's in the staging area. `styles.css` remains untracked.
    * *Explanation:* You can stage files individually or all at once. `git add .` stages all new and modified files in the current directory and its subdirectories.
-7. **Commit the staged changes (**\`\`**):** This saves the snapshot of your staged changes to your repository history. The `-m` flag provides a concise commit message.
+
+![git status after add](./images/lab1-3.png)
+
+7. **Commit the staged changes :** This saves the snapshot of your staged changes to your repository history. The `-m` flag provides a concise commit message.
 
    ```
    git commit -m "Initial commit: Created index.html with basic structure"
-
    ```
 
    * *Observation:* You'll see output confirming the commit, including the commit hash and the number of files changed.
-8. **Stage and Commit **\`\`**:**
+
+![first commit](./images/lab1-4.png)
+
+8. **Stage and Commit:**
 
    ```
    git add styles.css
    git commit -m "Added basic styles.css for the web project"
-
    ```
 
    * *Observation:* Now both `index.html` and `styles.css` are part of your repository's history.
-9. **View commit history (**\`\`**):** This command shows a list of all commits in the current branch, from newest to oldest.
+
+   ![second commit](./images/lab1-5.png)
+
+9. **View commit history :** This command shows a list of all commits in the current branch, from newest to oldest.
 
    ```
    git log
-
    ```
 
    * *Observation:* You should see your two commits listed, each with a unique hash, author, date, and commit message.
-   * *Advanced Log:* To see a more concise and graphical representation, try:
 
-     ```
-     git log --oneline --graph --all
+   ![git log](./images/lab1-6.png)
 
-     ```
-10. **Viewing Unstaged Changes (**\`\`**):**
+10. **Viewing Unstaged Changes :**
 
     * Make a small change to `index.html` (e.g., change the `<h1>` tag content).
 
@@ -236,7 +238,6 @@ This section walks you through initializing a Git repository, creating files, an
     echo '<h1>Hello, Git World (Updated)!</h1>
     <p>This is my first web project being tracked by Git.</p>
     ' > index.html
-
     ```
 
     * Use `git status` to see it's modified.
@@ -244,11 +245,14 @@ This section walks you through initializing a Git repository, creating files, an
 
     ```
     git diff
-
     ```
 
     * *Observation:* `git diff` will show you the line-by-line differences between your working directory and the staging area (or last commit if nothing is staged). Lines removed are prefixed with `-`, and lines added with `+`.
-11. **Unstaging Files (**\`\`**):**
+
+![git diff ](./images/lab1-7.png)
+![git diff](./images/lab1-8.png)
+
+11. **Unstaging Files :**
 
     * If you accidentally staged a file and want to remove it from the staging area *before* committing, you can use `git reset`.
     * First, modify `styles.css` (e.g., change background color).
@@ -269,7 +273,10 @@ This section walks you through initializing a Git repository, creating files, an
     * Check status: `git status` (it's now "Changes to be committed").
     * Unstage it: `git reset HEAD styles.css` (or simply `git reset styles.css` in newer Git versions).
     * Check status: `git status` (it's now "Changes not staged for commit"). The changes are still in your working directory, just no longer prepared for the next commit.
-12. **Removing Tracked Files (**\`\`**):**
+
+![unstage](./images/lab1-9.png)
+
+12. **Removing Tracked Files :**
 
     * If you want to delete a file and also remove it from Git's tracking, use `git rm`.
     * Create a dummy file: `echo "dummy content" > temp.txt`
